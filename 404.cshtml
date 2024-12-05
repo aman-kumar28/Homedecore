@@ -1,0 +1,77 @@
+﻿@using System.Net.Mail;
+@{
+    Layout = "_Layout.cshtml";
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+    nitin nn = new nitin();
+
+    if (IsPost)
+    {
+        string str = Request.Params["btn1"];
+        if (str == "submit")
+        {
+
+
+            string name = Request.Form["Name"];
+
+            string mobile = Request.Form["Mobile"];
+
+
+            string email = Request.Form["Email"];
+            //string email = ("contact@adstube.in");
+
+            //string message = Request.Form["Message"];
+
+
+            nn.InsertData("insert into table_enquire(id,name,mobile,email,dateadded,pos,status)values('" + nn.getid("table_enquire") + "','" + name.ToString() + "','" + mobile.ToString() + "','" + email.ToString() + "','" + DateTime.Now.ToString() + "','" + nn.getid("table_enquire") + "','true')");
+            //Response.Write("<script>alert('Thank You For Your Submission, We Will Get Back To You Soon.');</script>");
+
+            MailMessage feedBack = new MailMessage();
+            feedBack.To.Add("info@adstube.in");
+            feedBack.From = new MailAddress("info@adstube.in");
+            feedBack.Subject = ("Enquairy from adstube");
+
+            feedBack.Body = "Sender Name: " + name + "<br /><br />Mobile: " + mobile + "<br /><br />Email: " + email;
+            feedBack.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "relay-hosting.secureserver.net"; //Or Your SMTP Server Address
+            smtp.Port = 25;
+            smtp.EnableSsl = false;
+            smtp.Credentials = new System.Net.NetworkCredential("info@adstube.in", "");
+            //Or your Smtp Email ID and Password
+            smtp.Send(feedBack);
+            Response.Redirect("thanks.html");
+        }
+    }
+
+}
+
+
+@section head {
+
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">404 Error</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+        <li class="breadcrumb-item active text-white">404</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+<!-- 404 Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <i class="bi bi-exclamation-triangle display-1 text-secondary"></i>
+                <h1 class="display-1">404</h1>
+                <h1 class="mb-4">Page Not Found</h1>
+                <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>
+                <a class="btn border-secondary rounded-pill py-3 px-5" href="index.html">Go Back To Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 404 End -->

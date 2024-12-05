@@ -1,0 +1,196 @@
+﻿@using System.Net.Mail;
+@{
+    Layout = "_Layout.cshtml";
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+
+    var itm = db.QuerySingle("select * from product where id='" + UrlData[1].ToString().Split('.').First() + "'");
+
+    nitin nn = new nitin();
+
+
+    if (IsPost)
+    {
+        string str = Request.Params["btn1"];
+        if (str == "submit")
+        {
+
+            string product = Request.Form["product"];
+            string name = Request.Form["name"];
+            string mobile = Request.Form["mobile"];
+            string email = Request.Form["email"];
+            string state = Request.Form["state"];
+            string city = Request.Form["city"];
+            string pincode = Request.Form["pincode"];
+            string address = Request.Form["address"];
+
+
+            nn.InsertData("insert into productOrder(id,product,name,mobile,email,state,city,pincode,address,dateadded,pos,status)values('" + nn.getid("productOrder") + "','" + product.ToString() + "','" + name.ToString() + "','" + mobile.ToString() + "','" + email.ToString() + "','" + state.ToString() + "','" + city.ToString() + "','" + pincode.ToString() + "','" + address.ToString() + "','" + DateTime.Now.ToString() + "','" + nn.getid("productOrder") + "','true')");
+            //Response.Write("<script>alert('Thank You For Your Submission, We Will Get Back To You Soon.');</script>");
+            Response.Redirect("https://homedecorfurniture.co.in/thanks.html");
+
+
+            MailMessage feedBack = new MailMessage();
+            feedBack.To.Add("info@adstube.in");
+            feedBack.From = new MailAddress("info@adstube.in");
+            feedBack.Subject = ("Enquairy from adstube");
+
+            feedBack.Body = "Sender Name: " + name + "<br /><br />Mobile: " + mobile + "<br /><br />Email: " + email + "<br /><br />State: " + state + "<br /><br />City: " + city + "<br /><br />Pincode: " + pincode + "<br /><br />Address: " + address + "<br /><br />Product: " + product;
+            feedBack.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "relay-hosting.secureserver.net"; //Or Your SMTP Server Address
+            smtp.Port = 25;
+            smtp.EnableSsl = false;
+            smtp.Credentials = new System.Net.NetworkCredential("info@adstube.in", "");
+            //Or your Smtp Email ID and Password
+            smtp.Send(feedBack);
+            //Response.Redirect("thanks.html");
+        }
+    }
+}
+
+
+@section head {
+    <style>
+     .page-header {
+         background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(@Globalval.__siteHome/img/sideBanner.jpg)!important;
+     }
+    </style>
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Checkout</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Home</a></li>
+        <li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Pages</a></li>
+        <li class="breadcrumb-item active text-white">Checkout</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+<!-- Checkout Page Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h1 class="mb-4">Billing details</h1>
+        <form method="post">
+
+            <div class="row g-5">
+                <div class="col-md-12 col-lg-6 col-xl-7">
+
+                    <div class="form-item" style="display:none">
+                        <label class="form-label my-3">Product<sup>*</sup></label>
+                        <input type="text" class="form-control" name="product" value="@itm.title">
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-label my-3">Full Name<sup>*</sup></label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label my-3">Mobile<sup>*</sup></label>
+                        <input type="tel" class="form-control" name="mobile" required>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-label my-3">Email<sup>*</sup></label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+
+                    <div class="form-item">
+                        <label class="form-label my-3">State<sup>*</sup></label>
+                        <input type="text" class="form-control" name="state">
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label my-3">City<sup>*</sup></label>
+                        <input type="text" class="form-control" name="city">
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label my-3">Pincode<sup>*</sup></label>
+                        <input type="text" class="form-control" name="pincode">
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label my-3">Address <sup>*</sup></label>
+                        <input type="text" class="form-control" name="address">
+                    </div>
+
+                    <div class="row g-4 text-center align-items-center justify-content-center pt-4">
+                        <button type="submit" name="btn1" value="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</button>
+                    </div>
+                </div>
+
+                
+
+                <div class="col-md-12 col-lg-6 col-xl-5">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Products</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <th scope="row">
+                                        <div class="d-flex align-items-center mt-2">
+                                            <img src="@Globalval.__siteHome/allimages/product/@itm.images" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
+                                        </div>
+                                    </th>
+                                    <td class="py-5">@itm.title</td>
+                                    <td class="py-5"><s>₹@itm.price</s></td>
+                                    <td class="py-5">1</td>
+                                    <td class="py-5">₹@itm.discounted_price</td>
+                                </tr>
+
+
+
+
+
+                                <tr>
+                                    <th scope="row">
+                                    </th>
+                                    <td class="py-5">
+                                        <p class="mb-0 text-dark py-4">Payment/Shipping</p>
+                                    </td>
+                                    <td colspan="3" class="py-5">
+                                        <div class="form-check text-start">
+                                            <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-1" name="Shipping-1" value="Shipping" checked disabled>
+                                            <label class="form-check-label" for="Shipping-1">Cash On Delivery</label>
+                                        </div>
+                                        <div class="form-check text-start">
+                                            <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-2" name="Shipping-1" value="Shipping" checked disabled>
+                                            <label class="form-check-label" for="Shipping-2">No shipping charges</label>
+                                        </div>
+                                        @*<div class="form-check text-start">
+                                            <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-3" name="Shipping-1" value="Shipping">
+                                            <label class="form-check-label" for="Shipping-3">kya likhna hai yha ?</label>
+                                        </div>*@
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                    </th>
+                                    <td class="py-5">
+                                        <p class="mb-0 text-dark text-uppercase py-3">TOTAL</p>
+                                    </td>
+                                    <td class="py-5"></td>
+                                    <td class="py-5"></td>
+                                    <td class="py-5">
+                                        <div class="py-3 border-bottom border-top">
+                                            <p class="mb-0 text-dark">₹@itm.discounted_price</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Checkout Page End -->

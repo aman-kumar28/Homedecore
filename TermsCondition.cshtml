@@ -1,0 +1,161 @@
+﻿@using System.Net.Mail;
+@{
+    Layout = "_Layout.cshtml";
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+    nitin nn = new nitin();
+
+
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Terms & Conditions</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Home</a></li>
+        @*<li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Pages</a></li>*@
+        <li class="breadcrumb-item active text-white">terms&conditions</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+<!-- Contact Start -->
+
+<div class="container py-5">
+    <!-- About Us Section -->
+    <div class="row align-items-center">
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="h-100 rounded">
+                @*<img src="~/img/about.jpg" alt="about" class="img-fluid rounded shadow" />*@
+            </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="text-start">
+            <h2 class="display-4 mb-3">Terms & Conditions</h2>
+            <p class="lead mb-4">
+                Welcome to HomeDecor! By accessing or using our website and services, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully, as they govern your use of our site, including purchases from our product categories like dining tables, bookshelves, cupboards, drawers, sofas, beds, and wardrobes.
+
+                <h3>1. Acceptance of Terms</h3>
+            <p class="lead mb-4">
+                Your use of our website constitutes acceptance of these Terms and Conditions. If you do not agree to these terms, please refrain from using our site.
+            </p>
+
+            <h3> 2. Eligibility</h3>
+            <p class="lead mb-4">
+                To make purchases on our website, you must be at least 18 years old. By placing an order, you confirm that you are of legal age and authorized to use the chosen payment method.
+            </p>
+
+            <h3>3. Product Information and Availability</h3>
+            <p class="lead mb-4">
+                <span style="font-weight:bold"> Product Descriptions::</span>We strive to provide accurate descriptions and images of all products, including furniture items like sofas, dining tables, and wardrobes. However, minor variations in color or design may occur due to differences in screen settings.
+                Availability: All products are subject to availability. We reserve the right to limit the quantity of items available and to discontinue any product at any time without prior notice.
+            </p>
+            <h3>4. Pricing and Payment</h3>
+            <p class="lead mb-4">
+                <span style="font-weight:bold"> Pricing:</span>   All prices are listed in Your Currency, including applicable taxes unless stated otherwise. Prices are subject to change at our discretion, and promotions may be limited in duration or stock.
+                Payment Methods: We accept list of accepted payment methods. By placing an order, you confirm that the payment information provided is accurate and complete.
+            </p>
+            <h3>5. Order Processing and Delivery</h3>
+            <p class="lead mb-4">               
+                Order Confirmation: After placing an order, you will receive a confirmation email with details of your purchase. If there are any issues, please contact us immediately.
+                Shipping and Delivery: We offer various shipping options depending on your location. Estimated delivery times are provided at checkout, but actual delivery dates may vary. We are not responsible for delays beyond our control.
+                Delivery Charges: Delivery charges are calculated based on location and item weight and are displayed at checkout.
+            </p>
+
+            <h3>6. Return And Refunds</h3>
+            <p class="lead mb-4">
+                Our goal is to ensure satisfaction with every purchase. If you are not completely satisfied with your item:
+            </p>
+
+
+            <p class="lead mb-4"><span style="font-weight:bold"> Return Policy:</span> Items may be returned within specified return period, e.g., 30 days of delivery, provided they are unused and in original condition. Certain items, such as custom-made or sale products, may be non-returnable.</p>
+
+            <p class="lead mb-4">
+                <span style="font-weight:bold"> Refunds:</span>Once we receive and inspect the returned item, a refund will be issued to your original payment method within specified period, e.g., 7-10 business days.
+            </p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold"> Exchange Policy:</span> If you would like to exchange an item, please contact our customer service team.
+
+            </p>
+
+            <h3>7. Use Of Content</h3>
+            <p class="lead mb-4">
+                You agree to use our website for lawful purposes only. You may not:
+            </p>
+
+            <p>
+                <li class="lead mb-4">Interfere with the operation of the website, including introducing malicious code or engaging in hacking activities.</li>
+
+                <li class="lead mb-4">Attempt to access another user’s account without permission.</li>
+                <li class="lead mb-4">
+                    Post or transmit content that is abusive, defamatory, or violates any laws.
+                </li>
+            </p>
+            <p class="lead mb-4t"></p>
+
+            <h3>8. Limitation of Liability</h3>
+            <p class="lead mb-4">
+                While we strive to provide accurate information and quality products, we are not liable for:
+
+            </p>
+
+            <p>
+                <li class="lead mb-4">
+                    Any indirect, incidental, or consequential damages related to your use of our website or products.
+                </li>
+
+                <li class="lead mb-4">
+                    Issues arising from incorrect product usage or installation.
+                </li>
+            </p>
+            <h3> 9.  Indemnification </h3>
+            <p class="lead mb-4">
+                You agree to indemnify and hold harmless Homedecor Furniture, its affiliates, and employees from any claims, liabilities, damages, or expenses arising from your use of the website or violation of these terms.
+            </p>
+
+            <h3>10. Governing Law </h3>
+            <p class="lead mb-4">
+                These Terms & Conditions are governed by the laws of Uttar Pradesh. Any disputes will be resolved in the courts of Uttar Pradesh.
+            </p>
+
+            <h3>11. Changes To Terms</h3>
+            <p class="lead mb-4">
+                We reserve the right to update these terms periodically. We encourage you to review them regularly, as your continued use of our website constitutes acceptance of any changes.
+
+            </p>
+            <h3>12. Contact Us</h3>
+            <p class="lead mb-4">
+                If you have any questions about our Terms & Conditions, please contact us at  Sainik Nagar Telibagh,<a href="Lucknowhomedecorfurniture24@gmail.com" style="color:blue;">Lucknowhomedecorfurniture24@gmail.com</a>.
+
+
+            </p>
+
+
+            @*</p>
+        <p class="mb-4">
+            At HomeDecor, we are passionate about providing the finest quality furniture that not only enhances the beauty of your home but also provides long-lasting comfort. Each piece in our collection is selected with care to ensure it meets the highest standards of craftsmanship and design. Whether you're looking to create a cozy living room, a modern dining area, or a stylish bedroom retreat, HomeDecor is here to help you bring your vision to life.
+        </p>
+        <a href="/contact" class="btn btn-primary btn-lg">Learn More About Us</a>*@
+        </div>
+    </div>
+
+    <!-- Full-width Content Section -->
+    @*<div class="row mt-5">
+        <div class="col-12">
+            <div class="bg-light p-5 rounded shadow-sm">
+                <h3 class="display-5">Why Choose Us?</h3>
+                <p class="lead">
+                    At HomeDecor, we are committed to delivering exceptional customer service, unmatched quality, and unique designs. Here's why you should choose us for all your home furniture needs:
+                </p>
+                <ul class="list-unstyled">
+                    <li><strong>Quality Craftsmanship:</strong> Our furniture is made from the highest quality materials, ensuring long-lasting durability.</li>
+                    <li><strong>Customizable Options:</strong> We offer a range of customizable pieces that let you express your personal style.</li>
+                    <li><strong>Affordable Prices:</strong> Great design shouldn't break the bank. We offer furniture that fits every budget.</li>
+                    <li><strong>Eco-friendly Practices:</strong> We prioritize sustainability and use environmentally friendly materials whenever possible.</li>
+                </ul>
+            </div>
+        </div>
+    </div>*@
+</div>
+
+<!-- About End -->

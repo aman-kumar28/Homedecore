@@ -1,0 +1,64 @@
+﻿@using System.Net.Mail;
+@{
+    Layout = "_Layout.cshtml";
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+    nitin nn = new nitin();
+
+
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">About Us</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Home</a></li>
+        @*<li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Pages</a></li>*@
+        <li class="breadcrumb-item active text-white">About Us</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+<!-- Contact Start -->
+
+<div class="container py-5">
+    <!-- About Us Section -->
+    <div class="row align-items-center">
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="h-100 rounded">
+                <img src="~/img/about.jpg" alt="about" class="img-fluid rounded shadow" />
+            </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="col-lg-6">
+            <h2 class="display-4 mb-3">About HomeDecor</h2>
+            <p class="lead mb-4">
+                Welcome to HomeDecor, where we transform houses into beautiful homes with our unique and stylish home decor furniture. We believe that furniture isn’t just about function—it’s about creating spaces that inspire, comfort, and truly feel like home. Our carefully curated collection is crafted to blend design, durability, and elegance, making it easy for you to enhance every room with pieces that reflect your personality and taste.
+            </p>
+            <p class="lead mb-4">
+                At HomeDecor, we are passionate about providing the finest quality furniture that not only enhances the beauty of your home but also provides long-lasting comfort. Each piece in our collection is selected with care to ensure it meets the highest standards of craftsmanship and design. Whether you're looking to create a cozy living room, a modern dining area, or a stylish bedroom retreat, HomeDecor is here to help you bring your vision to life.
+            </p>
+            <a href="/contact" class="btn btn-primary btn-lg">Learn More About Us</a>
+        </div>
+    </div>
+
+    <!-- Full-width Content Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="bg-light p-5 rounded shadow-sm">
+                <h3 class="display-5">Why Choose Us?</h3>
+                <p class="lead mb-3">
+                    At HomeDecor, we are committed to delivering exceptional customer service, unmatched quality, and unique designs. Here's why you should choose us for all your home furniture needs:
+                </p>
+                <ul class="list-unstyled">
+                    <li class="lead mb-3"><span style="font-weight:bold;">Quality Craftsmanship:</span> Our furniture is made from the highest quality materials, ensuring long-lasting durability.</li>
+                    <li class="lead mb-3"><span style="font-weight:bold;">Customizable Options:</span> We offer a range of customizable pieces that let you express your personal style.</li>
+                    <li class="lead mb-3"><span style="font-weight:bold;">Affordable Prices:</span> Great design shouldn't break the bank. We offer furniture that fits every budget.</li>
+                    <li class="lead mb-3"><span style="font-weight:bold;">Eco-friendly Practices:</span> We prioritize sustainability and use environmentally friendly materials whenever possible.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About End -->

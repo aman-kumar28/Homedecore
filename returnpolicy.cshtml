@@ -1,0 +1,191 @@
+﻿@using System.Net.Mail;
+@{
+    Layout = "_Layout.cshtml";
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+    nitin nn = new nitin();
+
+
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Return Policy</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Home</a></li>
+        @*<li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Pages</a></li>*@
+        <li class="breadcrumb-item active text-white">return policy</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+<!-- Contact Start -->
+
+<div class="container py-5">
+    <!-- About Us Section -->
+    <div class="row align-items-center">
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="h-100 rounded">
+                @*<img src="~/img/about.jpg" alt="about" class="img-fluid rounded shadow" />*@
+            </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="text-start">
+            <h2 class="display-4 mb-3">Return Policy</h2>
+            <p class="lead mb-4">
+                We at Home Decor want you to love your new home decor as much as we love curating it.
+                However, we understand that sometimes things may not go as expected.
+                This Return Policy outlines our commitment to a smooth and easy return experience for all products across our categories
+                , including dining tables, bookshelves, cupboards, drawers, sofas, beds, and wardrobes.
+            </p>
+
+            <h3>1. Eligibility for Returns  </h3>
+            <p class="lead mb-4">
+                Our goal is to ensure satisfaction with every purchase. You may return most items in their original condition within 10days of delivery. Please note the following conditions:
+            </p>
+            <p>
+                <li class="lead mb-4"><span style="font-weight:bold;">Unopened and Unused Condition: </span> Items must be unused, undamaged, and in their original packaging.
+
+
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Non-Returnable Items: </span> Certain items are not eligible for returns, including:
+
+                </li>
+                <li class="lead mb-4">
+                    Customized or personalized furniture
+
+                </li>
+                <li class="lead mb-4">
+                    Clearance or final sale items
+
+
+                </li>
+                <li class="lead mb-4">
+                    Assembled items (once assembled, certain products cannot be returned)
+
+
+                </li>
+            </p>
+
+
+            <h3>2.Return Process</h3>
+            <p class="lead mb-4">
+                To initiate a return, follow these steps:
+            </p>
+            <p>
+
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Contact Us: </span> Reach out to our customer support team at [Customer Service Email or Phone Number] with your order number and reason for return.
+
+
+                </li>
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Approval: </span> Once we review your request, we will provide a return authorization and detailed instructions for returning your item.
+                </li>
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Shipping the Return:</span> You are responsible for securely packaging the item for shipping. To ensure a smooth return, we recommend using a trackable shipping method.
+
+                </li>
+            </p>
+
+
+            <h3>  3. Return Shipping Costs </h3>
+            <p>
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Defective or Incorrect Items </span> If the item received is defective, damaged, or incorrect, we will cover the return shipping cost.
+                </li>
+
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Other Returns</span> For all other returns, the cost of return shipping is the responsibility of the customer. Shipping costs are non-refundable.
+
+
+                </li>
+            </p>
+
+
+            <h3>
+                4. Refund Policy
+            </h3>
+            <p class="lead mb-4">
+                After receiving and inspecting the returned item, we will issue a refund within [ 7-10 business days] to your original payment method. Refunds will cover the cost of the item only and do not include original shipping charges unless due to a defect or error on our part.
+            </p>
+
+            <h3>
+                5. Exchanges
+            </h3>
+            <p class="lead mb-4">
+                We currently do not offer direct exchanges. If you wish to exchange an item, please initiate a return for the original item and place a new order for the replacement.
+
+            </p>
+
+
+
+            <h3>
+                6. Damaged or Defective Items
+            </h3>
+            <p class="lead mb-4">
+                If your item arrives damaged or defective:
+
+            </p>
+            <p>
+
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Contact Us Immediately:  </span> Send us a photo of the damaged or defective item within  7 days of delivery.
+
+
+
+                </li>
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Resolution Options:  </span>We will either arrange a replacement, repair, or full refund for qualifying items based on the severity of the defect.
+
+                </li>
+
+            </p>
+
+            <h3>
+                7. Return Policy for Specific Categories
+            </h3>
+            <p class="lead mb-4">
+                Due to the unique nature of our home decor items, return policies may vary by product type:
+
+
+            </p>
+            <p>
+
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Furniture: </span> Large items like sofas, beds, and dining tables may have unique packaging and handling requirements. Contact us for specific instructions.
+
+
+
+
+                </li>
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Decorative Accessories: </span> Items like shelves, drawers, and other smaller furniture are eligible for standard returns.
+
+                </li>
+
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;"> Assembled Products: </span> Once assembled, some items may be ineligible for returns due to safety and quality concerns.
+
+
+                </li>
+
+            </p>
+
+
+
+            <h3>8.Contact Us</h3>
+
+            <p class="lead mb-4">
+                For any questions or further assistance with returns, please reach out to our customer support team at Sainik Nagar Telibagh , <a href="Lucknowhomedecorfurniture24@gmail.com" style="color:blue;">Lucknowhomedecorfurniture24@gmail.com.</a> We’re here to help you every step of the way.
+
+            </p>
+
+
+        </div>
+    </div>
+
+    
+</div>
+
+

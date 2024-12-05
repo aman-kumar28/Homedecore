@@ -1,0 +1,362 @@
+﻿@using System.Net.Mail;
+@{
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+    nitin nn = new nitin();
+
+    if (IsPost)
+    {
+        string str = Request.Params["btn1"];
+        if (str == "submit")
+        {
+
+
+            string name = Request.Form["name"];
+            string mobile = Request.Form["mobile"];
+            string email = Request.Form["email"];
+            string message = Request.Form["message"];
+
+
+            nn.InsertData("insert into table_enquire(id,name,mobile,email,message,dateadded,pos,status)values('" + nn.getid("table_enquire") + "','" + name.ToString() + "','" + mobile.ToString() + "','" + email.ToString() + "','" + message.ToString() + "','" + DateTime.Now.ToString() + "','" + nn.getid("table_enquire") + "','true')");
+            Response.Write("<script>alert('Thank You For Your Submission, We Will Get Back To You Soon.');</script>");           
+
+            MailMessage feedBack = new MailMessage();
+            feedBack.To.Add("info@adstube.in");
+            feedBack.From = new MailAddress("info@adstube.in");
+            feedBack.Subject = ("Enquairy from adstube");
+
+            feedBack.Body = "Sender Name: " + name + "<br /><br />Mobile: " + mobile + "<br /><br />Email: " + email + "<br /><br />Message: " + message;
+            feedBack.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "relay-hosting.secureserver.net"; //Or Your SMTP Server Address
+            smtp.Port = 25;
+            smtp.EnableSsl = false;
+            smtp.Credentials = new System.Net.NetworkCredential("info@adstube.in", "");
+            //Or your Smtp Email ID and Password
+            smtp.Send(feedBack);
+            //Response.Redirect("thanks.html");
+        }
+    }
+
+}
+
+
+
+   
+<!DOCTYPE html>
+<html lang="en">
+
+ @RenderSection("head", required: false)
+<head>
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Taj Empire - Real Estate ">
+    <meta name="keywords" content="real estate, property, property search, agent, apartments, booking, business, idx, housing, real estate agency, rental">
+    <meta name="author" content="unicoder">
+    <title>Taj Empire Real State</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="@Globalval.__siteHome/logo1.png">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&amp;display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+    <!-- Required style of the theme -->
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/all.min.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/animate.min.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/webfonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/owl.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/layerslider.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/template.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/style.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/colors/color.css">
+    <link rel="stylesheet" href="@Globalval.__siteHome/assets/css/loader.css">
+
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<style>
+.py-50, .p-50, .pt-50 {
+    padding-top: 250px !important;
+}
+.nav-logo {
+    width: 200px;
+}
+.footer-logo img {
+    width: 200px;
+}
+
+</style>
+</head>
+
+<body>
+
+    @*<div class="preloader">
+		<div class="loader xy-center"></div>
+	</div>*@
+
+    <div id="page_wrapper" class="bg-white">
+        <!--============== Header Section Start ==============-->
+        <header class="header-style-1 nav-on-banner fixed-bg-secondary">
+            <div class="top-header xs-mx-none">
+                <div class="container">
+                    <div class="row row-cols-md-2 row-cols-1">
+                        <div class="col">
+                            <ul class="top-contact list-color-white">
+                                <li><a href="tel:+97143217447"><i class="fa fa-phone" aria-hidden="true"></i> Need Support ? +971 4 321 7447</a></li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <ul class="nav-bar-top right list-color-white d-flex">
+                                @*<li><a href="about.html">About</a></li>*@
+                                <li><a href="#">Sign Up</a></li>
+                                <li><a href="#">Login</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <nav class="navbar navbar-expand-lg nav-white nav-primary-hover nav-line-active">
+                                <a class="navbar-brand" href="https://tajempire-re.com/"><img class="nav-logo" src="@Globalval.__siteHome/images/Taj Empire Logo .png" alt="Image not found !"></a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon flaticon-menu flat-small text-primary"></span>
+                                  </button>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav ms-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link dropdown-toggle" href="@Globalval.__siteHome/index">HOME</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link dropdown-toggle" href="@Globalval.__siteHome/about">ABOUT</a>     
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link dropdown-toggle" href="@Globalval.__siteHome/buy">BUY</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link dropdown-toggle" href="@Globalval.__siteHome/rent">RENT</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link dropdown-toggle" href="@Globalval.__siteHome/off-plan">OFF-PLAN</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link dropdown-toggle" href="@Globalval.__siteHome/team">OUR TEAM</a>     
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Globalval.__siteHome/contact">CONTACT</a>
+                                        </li>
+                                    </ul>
+                                    <a href="@Globalval.__siteHome/property-management" class="btn btn-primary add-listing-btn">+ PROPERTY MANAGEMENT</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--============== Header Section End ==============-->
+
+
+    @RenderBody()
+
+  <!--============== Register Section Start ==============-->
+        <div class="full-row bg-primary py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h3 class="text-white xs-text-center my-20 font-400">Are you looking for House or Customer of your Property?</h3>
+                    </div>
+                    <div class="col-lg-3 col-md-4">
+                        <a href="https://tajempire-re.com/contact" class="btn btn-white y-center position-relative d-table xs-mx-auto ms-auto">Connect With Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Register Section End ==============-->
+   <!--============== Footer Section Start ==============-->
+        <footer class="full-row footer-default-dark bg-footer" style="padding-bottom: 30px">
+            <div class="container">
+                <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <div class="footer-widget mb-4">
+                            <div class="footer-logo mb-4">
+                                <a href="#"><img src="@Globalval.__siteHome/images/Taj Empire Logo .png" alt="Image not found!" /></a>
+                            </div>
+                            <p>Taj Empire Real Estate offers an outstanding portfolio of residential and commercial spaces for sale, Rent, and leasing.</p>
+                        </div>
+                        <div class="footer-widget media-widget mb-4">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="footer-widget contact-widget mb-4">
+                            <h3 class="widget-title mb-4">Contact Info</h3>
+                            <ul>
+                                <li>Office No. 403 Hamsah Building, Ansar Gallery, Al Karama, Dubai P.O Box - 27183</li>
+                                <li><a href="tel:+97143217447" style="color:#c3c3c3;">+971 4 321 7447</a></li>
+                                <li><a href="#" style="color:#c3c3c3;">info@zealwayproperties.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="footer-widget footer-nav mb-4">
+                            <h3 class="widget-title mb-4">Quick Links</h3>
+                            <ul>
+                                
+                                <li><a href="#">Buy</a></li>
+                                <li><a href="#">Rent</a></li>
+                                <li><a href="#">Off-Plan</a></li>
+<li><a href="#">About US</a></li>
+                               @* <li><a href="#">Team</a></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="footer-widget newslatter-widget mb-4">
+                            <h4 class="widget-title mb-4">Appointment</h4>
+                            <p>Litora ligula dapibus scelerisque vitae, fermentum aenean gravida lobortis mus pulvinar magna turient primis.</p>
+                            <a class="btn btn-primary w-100">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--============== Footer Section End ==============-->
+
+        <!--============== Copyright Section Start ==============-->
+        <div class="copyright bg-footer text-default py-4">
+            <div class="container">
+                <div class="row row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <span class="text-white">© 2022 Uniland All right reserved</span>
+                    </div>
+                    <div class="col">
+                        <ul class="line-menu float-end list-color-gray">
+                            <li><a href="#">Privacy & Policy </a></li>
+                            <li>|</li>
+                            <li><a href="#">Site Map</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Copyright Section End ==============-->
+
+        <!-- Scroll to top -->
+        <div class="scroll-top-vertical xs-mx-none" id="scroll">Go Top <i class="ms-2 fa-solid fa-arrow-right-long"></i></div>
+        <!-- End Scroll To top -->
+
+        <!--============== Modal Start ==============-->
+
+     <button type="button" class="xyz" data-toggle="modal" data-target="#exampleModalCenter" style="color: white;
+    padding: 9px 40px 9px 40px;
+    background: black;
+    border-radius: 5px; margin-top: 22px;
+    border: 2px solid #102361; margin-left: 85px;">Enquire Now</button>
+
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style=" background: black;
+    color: white;">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="text-align:center;">Organize Site Visit</h5>
+         <button type="button" data-dismiss="modal" style="font-weight:bold;">X</button>
+      </div>
+        <div class="container">
+            <div class="row">
+        <div class="col-md-6">
+            <img src="images/ban1.jpg" id="response" style="width: 115%;
+    height: 134%; margin-left: -15px;"/>
+        </div>
+        <div class="col-md-6">
+      <div class="modal-body">
+          <img src="logo.png" id="modal-logo"  style="margin-left:40px;"/>
+          <input type="text" class="form-control" placeholder="Enter Your Name*" />
+       
+           <input type="text" class="form-control" placeholder="Enter Your Number*" maxlength="10" pattern="[6789][0-9]{9}" />
+       
+          <input type="text" class="form-control" placeholder="Enter Your Email*" />
+        
+      </div>
+            </div>
+ </div>
+        </div>
+      <div class="modal-footer">
+
+          <button type="button" class="btn btn-primary trFooter-Form-button" name="btn1" value="submit" style="background-color: black; border: 2px solid black; padding: 10px 40px 10px 40px;
+    margin-right: 15px;
+    width: 40%;"/>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: white; border:2px solid black; color: black; padding: 7px 30px 7px 30px;">Close</button>
+        
+    
+      </div>
+      
+    </div>
+  </div>
+</div> 
+
+        <!--============== Modal End ==============-->
+
+    </div>
+
+    <!-- Javascript Files -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/greensock.js"></script>
+    <script src="assets/js/layerslider.transitions.js"></script>
+    <script src="assets/js/layerslider.kreaturamedia.jquery.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <script src="assets/js/jquery.fancybox.min.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/range/tmpl.js"></script>
+    <script src="assets/js/range/jquery.dependClass.js"></script>
+    <script src="assets/js/range/draggable.js"></script>
+    <script src="assets/js/range/jquery.slider.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/mixitup.min.js"></script>
+    <script src="assets/js/paraxify.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        $('#slider').layerSlider({
+            sliderVersion: '6.0.0',
+            type: 'fullwidth',
+            responsiveUnder: 0,
+            maxRatio: 1,
+            slideBGSize: 'auto',
+            hideUnder: 0,
+            hideOver: 100000,
+            skin: 'outline',
+            fitScreenWidth: true,
+            fullSizeMode: 'fitheight',
+            navButtons: false,
+            navStartStop: false,
+            height:840,
+            skinsPath: 'assets/skins/'
+        });
+    </script>
+</body>
+</html>

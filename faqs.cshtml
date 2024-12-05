@@ -1,0 +1,236 @@
+﻿@using System.Net.Mail;
+@{
+    Layout = "_Layout.cshtml";
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+    nitin nn = new nitin();
+
+
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Faqs & Help</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Home</a></li>
+        @*<li class="breadcrumb-item"><a href="#" style=" color: #5D273F; font-weight:900;">Pages</a></li>*@
+        <li class="breadcrumb-item active text-white">Faqs</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+<!-- Contact Start -->
+
+<div class="container py-5">
+    <!-- About Us Section -->
+    <div class="row align-items-center">
+        <!-- Image Column -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="h-100 rounded">
+                @*<img src="~/img/about.jpg" alt="about" class="img-fluid rounded shadow" />*@
+            </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="text-start">
+            <h2 class="display-4 mb-3">Faqs (Frequently Asked Questions)</h2>
+            <p class="lead mb-4">
+                Welcome to the Home Decor FAQ page! We’re here to answer your questions and ensure a seamless shopping experience across our categories, from dining tables to bookshelves, sofas, and wardrobes. Below are some of the most commonly asked questions.
+            </p>
+
+            <h3>1.Order and Payments</h3>
+            <p class="lead mb-3 fw-bold">Q: What payment methods do you accept? </p>
+            <p>
+            <p class="lead mb-4"><span style="font-weight:bold;">A:</span> We accept all major credit and debit cards, PayPal, Apple Pay, etc. For security, all payments are processed via a secure gateway.</p>
+
+
+            <p class="lead mb-3 fw-bold">
+                Q.How do I know my order was placed successfully?
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> After completing your order, you’ll receive a confirmation email with your order details. If you don’t receive it within a few minutes, please check your spam folder or contact our customer support team.
+                
+            </p>
+
+            <p class="lead mb-3 fw-bold">
+                Q: Can I make changes to my order after it’s been placed?
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> We start processing orders immediately, but if you need to make changes, contact us within timeframe, 24 hours, and we’ll do our best to accommodate your request.
+            </p>
+
+
+            <h3>2.Shipping and Delivery</h3>
+            <p class="lead mb-3 fw-bold">
+                Q: What are the shipping options and costs?
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> We offer standard and expedited shipping options at checkout. Shipping costs vary depending on the item size and delivery location. Orders above threshold amount may qualify for free shipping.
+            </p>
+
+
+            <p class="lead mb-3 fw-bold">
+                Q: How long will it take to receive my order?
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> Delivery times vary based on the item and location, but standard shipping usually takes (5-7) business days. Larger items like sofas and dining tables may require additional handling time.
+
+            </p>
+
+            <p class="lead mb-3 fw-bold">
+                Q: How can I track my order?
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span>Once your order ships, you’ll receive a tracking link via email to monitor your delivery status.
+
+            </p>
+
+
+
+
+            <h3>3. Returns and Exchanges</h3>
+            <p class="lead mb-3 fw-bold">
+                Q: What is your return policy?
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> You can return most items within [10 days] if they are unused and in their original packaging. Please refer to our Return Policy page for details on eligibility and exclusions.
+            </p>
+
+
+            <p class="lead mb-3 fw-bold">
+                Q: How do I initiate a return?
+
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span>Contact our customer support team with your order number, and we’ll guide you through the return process.
+            </p>
+
+            <p class="lead mb-3 fw-bold">
+                Q: Can I exchange an item?
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span>We currently don’t offer direct exchanges. Please initiate a return for the original item and place a new order for the replacement.
+
+            </p>
+
+
+
+
+            <h3> 4. Product Care and Assembly </h3>
+            <p class="lead mb-3 fw-bold">
+                Q: How do I care for my furniture?
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> Proper care will help extend the life of your furniture. For wood products, use a damp cloth for cleaning and avoid harsh chemicals. For upholstered items, use a fabric-safe cleaner or vacuum gently. Specific care instructions may be found on each product page.
+            </p>
+
+
+            <p class="lead mb-3 fw-bold">
+                Q: Do I need to assemble the furniture myself?
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> Many of our products require minimal assembly, which can be done with standard tools. Assembly instructions are included with each product, and assembly videos may be available on our website.
+            </p>
+
+
+
+
+            <h3>
+                5. Account and Privacy
+            </h3>
+            <p class="lead mb-3 fw-bold">
+                Q: Do I need an account to place an order?
+
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> No, but creating an account allows you to save your information for faster checkout, track your orders, and view your purchase history.
+            </p>
+
+
+            <p class="lead mb-3 fw-bold">
+                Q: How do you handle my personal information?
+
+
+            </p>
+            <p>
+            <p class="lead mb-4">
+                <span style="font-weight:bold;">A:</span> : Your privacy is very important to us. Please see our Privacy Policy page for detailed information on how we collect, use, and protect your data.
+
+            </p>
+
+
+            <h3>
+                6. Help & Support
+            </h3>
+            <p class="lead mb-4">
+                At Home Decor, we’re here to assist you every step of the way. Here are ways to get in touch:
+
+            </p>
+            <p>
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Email Support: </span> For questions regarding your order, products, or returns, email us at ,<a href=" Lucknowhomedecorfurniture24@gmail.com" style="color:blue;"> Lucknowhomedecorfurniture24@gmail.com</a>.
+                </li>
+
+                <li class="lead mb-4">
+                    <span style="font-weight:bold;">Phone Support:</span> Call us at 8177004439 during our business hours:  Monday to Friday, 9 AM to 5 PM.
+                </li>
+                <li class="lead mb-4">
+                <span style="font-weight:bold;">Live Chat: </span> Chat with us directly through our website for quick responses during business hours.
+
+                </li>
+                <li class="lead mb-4">
+                <span style="font-weight:bold;">FAQ Section: </span> Check our FAQ above for quick answers to common questions.
+                </li>
+            </p>
+
+            <h3>
+                7. Contact Us Form
+            </h3>
+            
+
+           <p class="lead mb-4">
+                Can’t find the answer to your question? Please fill out our Contact Us form, and a member of our team will get back to you within 24-48 hours.
+
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    
+</div>
+
+

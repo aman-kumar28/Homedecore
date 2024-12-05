@@ -1,0 +1,153 @@
+﻿@using System.Net.Mail;
+@{
+    Layout = "_Layout.cshtml";
+    var db = WebMatrix.Data.Database.Open("mvcconnection");
+    nitin nn = new nitin();
+
+    if (IsPost)
+    {
+        string str = Request.Params["btn1"];
+        if (str == "submit")
+        {
+
+
+            string name = Request.Form["Name"];
+
+            string mobile = Request.Form["Mobile"];
+
+
+            string email = Request.Form["Email"];
+            //string email = ("contact@adstube.in");
+
+            //string message = Request.Form["Message"];
+
+
+            nn.InsertData("insert into table_enquire(id,name,mobile,email,dateadded,pos,status)values('" + nn.getid("table_enquire") + "','" + name.ToString() + "','" + mobile.ToString() + "','" + email.ToString() + "','" + DateTime.Now.ToString() + "','" + nn.getid("table_enquire") + "','true')");
+            //Response.Write("<script>alert('Thank You For Your Submission, We Will Get Back To You Soon.');</script>");
+
+            MailMessage feedBack = new MailMessage();
+            feedBack.To.Add("info@adstube.in");
+            feedBack.From = new MailAddress("info@adstube.in");
+            feedBack.Subject = ("Enquairy from adstube");
+
+            feedBack.Body = "Sender Name: " + name + "<br /><br />Mobile: " + mobile + "<br /><br />Email: " + email;
+            feedBack.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "relay-hosting.secureserver.net"; //Or Your SMTP Server Address
+            smtp.Port = 25;
+            smtp.EnableSsl = false;
+            smtp.Credentials = new System.Net.NetworkCredential("info@adstube.in", "");
+            //Or your Smtp Email ID and Password
+            smtp.Send(feedBack);
+            Response.Redirect("thanks.html");
+        }
+    }
+
+}
+
+
+@section head {
+
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Testimonial</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+        <li class="breadcrumb-item active text-white">Testimonial</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+<!-- Tastimonial Start -->
+<div class="container-fluid testimonial py-5">
+    <div class="container py-5">
+        <div class="testimonial-header text-center">
+            <h4 class="text-primary">Our Testimonial</h4>
+            <h1 class="display-5 mb-5 text-dark">Our Client Saying!</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            <div class="testimonial-item img-border-radius bg-light rounded p-4">
+                <div class="position-relative">
+                    <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                    <div class="mb-4 pb-4 border-bottom border-secondary">
+                        <p class="mb-0">
+                            Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center flex-nowrap">
+                        <div class="bg-secondary rounded">
+                            <img src="img/testimonial-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                        </div>
+                        <div class="ms-4 d-block">
+                            <h4 class="text-dark">Client Name</h4>
+                            <p class="m-0 pb-3">Profession</p>
+                            <div class="d-flex pe-5">
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item img-border-radius bg-light rounded p-4">
+                <div class="position-relative">
+                    <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                    <div class="mb-4 pb-4 border-bottom border-secondary">
+                        <p class="mb-0">
+                            Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center flex-nowrap">
+                        <div class="bg-secondary rounded">
+                            <img src="img/testimonial-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                        </div>
+                        <div class="ms-4 d-block">
+                            <h4 class="text-dark">Client Name</h4>
+                            <p class="m-0 pb-3">Profession</p>
+                            <div class="d-flex pe-5">
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item img-border-radius bg-light rounded p-4">
+                <div class="position-relative">
+                    <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                    <div class="mb-4 pb-4 border-bottom border-secondary">
+                        <p class="mb-0">
+                            Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center flex-nowrap">
+                        <div class="bg-secondary rounded">
+                            <img src="img/testimonial-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                        </div>
+                        <div class="ms-4 d-block">
+                            <h4 class="text-dark">Client Name</h4>
+                            <p class="m-0 pb-3">Profession</p>
+                            <div class="d-flex pe-5">
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tastimonial End -->
